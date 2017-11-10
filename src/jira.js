@@ -300,6 +300,23 @@ export default class JiraApi {
   }
 
   /**
+   * @name findServiceDeskOrg
+   * @function
+   * Find an issue in jira
+   * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#id290709)
+   * @param {string} query - Query that you want to search for
+   */
+  findServiceDeskOrg(search) {
+    return this.doRequest(this.makeRequestHeader(this.makeUri({
+      pathname: 'search',
+      intermediatePath: '/rest/servicedesk/1/organisations/',
+      query: {
+        query: search
+      }
+    })));
+  }
+
+  /**
    * @name getUnresolvedIssueCount
    * @function
    * Get the unresolved issue count
